@@ -9,12 +9,16 @@ public class Player : MonoBehaviour
     private int _speed;
     [SerializeField]
     private int _jumpForce;
+    private bool _resetJumpNeeded = false;
+    private bool _isGrounded = false;
 
     // Handles
     [SerializeField]
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    private LayerMask _layerMask;
 
     void Start()
     {
@@ -33,14 +37,40 @@ public class Player : MonoBehaviour
     {
         float move = Input.GetAxis("Horizontal");
         Flip(move);
+        _isGrounded = IsGrounded();
         _rigidbody2D.velocity = new Vector2(move * _speed,_rigidbody2D.velocity.y);
         RunAnim(move);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true)
         {
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
+            StartCoroutine(resetJumpNeeded());
+            _animator.SetBool("Jumping", true);
         }
     }
+    private bool IsGrounded()
+    {
+        RaycastHit2D Hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, _layerMask);
+        Debug.DrawRay(transform.position, Vector2.down, Color.yellow);
+        if(Hit.collider != null)
+        {
+            Debug.Log("Grounded");
+            if(_resetJumpNeeded == false)
+            {
+                _animator.SetBool("Jumping", false);
+                return true;
+            }   
+        }
+        return false;
+    }
+
+    IEnumerator resetJumpNeeded()
+    {
+        _resetJumpNeeded = true;
+        yield return new WaitForSeconds(1.0f);
+        _resetJumpNeeded = false;
+    }
+
 
     private void RunAnim(float move)
     {
