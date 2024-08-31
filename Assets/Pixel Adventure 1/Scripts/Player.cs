@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
     public void AddFruits(int Fruits)
     {
         _fruits += Fruits;
+        UI_Manager.Instance.CurrentFruitCount(Fruits);
     }
 
 

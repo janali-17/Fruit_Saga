@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class UI_Manager : MonoBehaviour
 {
+    public int _fruits;
+
     [SerializeField]
     private Animator _animator;
     [SerializeField]
@@ -20,6 +22,12 @@ public class UI_Manager : MonoBehaviour
     private Button Pause_Button;
     [SerializeField]
     private Button Restart;
+    [SerializeField]
+    private GameObject _bronze;
+    [SerializeField]
+    private GameObject _silver;
+    [SerializeField]
+    private GameObject _gold;
 
     private static UI_Manager _instance;
     public static UI_Manager Instance
@@ -38,7 +46,6 @@ public class UI_Manager : MonoBehaviour
     {
         _instance = this;
         _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        //Scene ActiveScene = SceneManager.GetActiveScene();
     }
     private void OnEnable()
     {
@@ -74,6 +81,23 @@ public class UI_Manager : MonoBehaviour
         else if(ButtonPressed == Quit)
         {
             Application.Quit();
+        }
+    }
+
+    public void CurrentFruitCount(int fruits)
+    {
+        _fruits += fruits;
+        if(_fruits == 5) 
+        {
+            _bronze.SetActive(true);
+        }
+        else if (_fruits == 8) 
+        { 
+            _silver.SetActive(true);
+        }
+        else if(_fruits == 10) 
+        {
+            _gold.SetActive(true);
         }
     }
 }
