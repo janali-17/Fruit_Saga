@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     // Variables
     [SerializeField]
+    private int _fruits;
+    [SerializeField]
     private int _speed;
     [SerializeField]
     private int _jumpForce;
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.down, Color.yellow);
         if(Hit.collider != null)
         {
-            Debug.Log("Grounded");
+           // Debug.Log("Grounded");
             if(_resetJumpNeeded == false)
             {
                 _animator.SetBool("Jumping", false);
@@ -69,6 +71,11 @@ public class Player : MonoBehaviour
         _resetJumpNeeded = true;
         yield return new WaitForSeconds(1.0f);
         _resetJumpNeeded = false;
+    }
+
+    public void AddFruits(int Fruits)
+    {
+        _fruits += Fruits;
     }
 
 
