@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class Main_Menu : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class Main_Menu : MonoBehaviour
     private Button Level_2;
     [SerializeField]
     private Button Level_3;
+
+    [SerializeField]
+    private GameObject[] Locks;
+    [SerializeField]
+    private int _level;
+    [SerializeField]
+    private bool _status;
 
 
     private void OnEnable()
@@ -52,5 +60,10 @@ public class Main_Menu : MonoBehaviour
         {
             Debug.Log("Level - 3");
         }
+    }
+    public void Lock(bool status, int level)
+    {
+        _status = status;
+        _level = level;
     }
 }

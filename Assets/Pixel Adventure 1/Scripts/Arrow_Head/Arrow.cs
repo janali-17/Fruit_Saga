@@ -23,7 +23,7 @@ public class Arrow : MonoBehaviour
         transform.Translate(Vector2.up * _speed * Time.deltaTime);
         if (transform.position.x >= 29)
         {
-            Debug.Log("Destroy the arrow");
+            //Debug.Log("Destroy the arrow");
             Destroy(this.gameObject);
         }
     }
