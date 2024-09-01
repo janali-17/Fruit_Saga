@@ -46,7 +46,7 @@ public class Main_Menu : MonoBehaviour
         }
         else if (ButtonPressed == Level_2)
         {
-            Debug.Log("Level - 2");
+            SceneManager.LoadScene(2);
         }
         else if (ButtonPressed == Level_3)
         {

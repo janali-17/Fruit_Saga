@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Pixel Adventure 1/Scenes/Level_1.unity
     guid: e4b27ea45de8e2e4babdc948472943dc
+  - enabled: 1
+    path: Assets/Pixel Adventure 1/Scenes/Level_2.unity
+    guid: f12ddab66c3fd9940b03a2ea7fd67d70
   m_configObjects: {}

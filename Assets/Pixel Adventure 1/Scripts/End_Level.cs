@@ -51,7 +51,8 @@ public class End_Level : MonoBehaviour
 
             if(SceneManager.GetActiveScene().name == "Level_1")
             {
-                Debug.Log("Load Scene 2");
+                SceneManager.LoadScene(2);
+                Time.timeScale = 1.0f;
             }
         }
     }
