@@ -17,13 +17,7 @@ public class Main_Menu : MonoBehaviour
     private Button Level_2;
     [SerializeField]
     private Button Level_3;
-
-    [SerializeField]
-    private GameObject[] Locks;
-    [SerializeField]
-    private int _level;
-    [SerializeField]
-    private bool _status;
+    [SerializeField] private Button ResetButton;
 
 
     private void OnEnable()
@@ -33,6 +27,7 @@ public class Main_Menu : MonoBehaviour
         Level_1.onClick.AddListener(() => buttonCallBack(Level_1) );
         Level_2.onClick.AddListener(() => buttonCallBack(Level_2) );
         Level_3.onClick.AddListener(() => buttonCallBack(Level_3) );
+        ResetButton.onClick.AddListener(() => buttonCallBack(ResetButton) );
     }
 
    
@@ -60,10 +55,10 @@ public class Main_Menu : MonoBehaviour
         {
             Debug.Log("Level - 3");
         }
-    }
-    public void Lock(bool status, int level)
-    {
-        _status = status;
-        _level = level;
+        else if(ButtonPressed == ResetButton) 
+        { 
+            PlayerPrefs.DeleteAll();
+        }
+
     }
 }
