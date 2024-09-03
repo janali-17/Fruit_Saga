@@ -6,12 +6,8 @@ public class Arrow : MonoBehaviour
 {
     [SerializeField]
     private int _speed = 8;
-    
-
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    Animator _animator;
 
     void Update()
     {
@@ -31,6 +27,8 @@ public class Arrow : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Player player = other.GetComponent<Player>();
+            player.GameOver();
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }

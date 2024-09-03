@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private int _jumpForce;
     private bool _resetJumpNeeded = false;
     private bool _isGrounded = false;
+    [SerializeField]
+    private Animator _GameOver_Animator;
 
     // Handles
     [SerializeField]
@@ -27,7 +29,9 @@ public class Player : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+
     }
 
     void Update()
@@ -94,5 +98,10 @@ public class Player : MonoBehaviour
         {
             _spriteRenderer.flipX = true;
         }
+    }
+    public void GameOver()
+    {
+        _GameOver_Animator.SetBool("GameOver", true);
+        Time.timeScale = 0.0f;
     }
 }

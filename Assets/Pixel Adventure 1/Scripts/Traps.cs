@@ -9,6 +9,8 @@ public class Traps : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Player player = other.GetComponent<Player>();
+            player.GameOver();
             Destroy(other.gameObject);
         }
     } 
