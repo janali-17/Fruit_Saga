@@ -50,10 +50,12 @@ public class Main_Menu : MonoBehaviour
         else if (ButtonPressed == Level_2)
         {
             SceneManager.LoadScene(2);
+            Time.timeScale = 1.0f;
         }
         else if (ButtonPressed == Level_3)
         {
-            Debug.Log("Level - 3");
+            SceneManager.LoadScene(3);
+            Time.timeScale = 1.0f;
         }
         else if(ButtonPressed == ResetButton) 
         { 

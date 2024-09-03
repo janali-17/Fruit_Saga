@@ -20,14 +20,10 @@ public class LevelSelection : MonoBehaviour
             {
                 lvlButtons[i].interactable = false;
             }
-        }     
-        if(levelAt == 2) 
-        {
-            lvllock[1].SetActive(false);
-        }
-        else if (levelAt == 3)
-        {
-            lvllock[2].SetActive(false);
+            else if (lvlButtons[i] == true)
+            {
+                lvllock[i].SetActive(false);
+            }
         }
     }
 }
