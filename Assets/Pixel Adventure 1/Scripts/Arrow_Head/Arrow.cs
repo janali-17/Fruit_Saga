@@ -21,11 +21,10 @@ public class Arrow : MonoBehaviour
     void ShootArrow()
     {
         transform.Translate(Vector2.up * _speed * Time.deltaTime);
-        if (transform.position.x >= 29)
-        {
+
+        StartCoroutine(ArrowDestroy());
             //Debug.Log("Destroy the arrow");
-            Destroy(this.gameObject);
-        }
+            
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -35,5 +34,10 @@ public class Arrow : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
+    }
+    IEnumerator ArrowDestroy()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Destroy(this.gameObject);
     }
 }
