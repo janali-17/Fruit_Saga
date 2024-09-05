@@ -153,6 +153,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
+  _audioClip: {fileID: 8300000, guid: b994f8c641daec941b9d5c69c3c143b0, type: 3}
 --- !u!95 &4881754251179367722
 Animator:
   serializedVersion: 3

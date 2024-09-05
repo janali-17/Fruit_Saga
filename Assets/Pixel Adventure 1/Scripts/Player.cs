@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-
-
     }
 
     void Update()
