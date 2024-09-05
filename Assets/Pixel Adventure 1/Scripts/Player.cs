@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
@@ -39,13 +40,13 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        float move = Input.GetAxis("Horizontal");
+        float move = CrossPlatformInputManager.GetAxis("Horizontal");//Input.GetAxis("Horizontal");
         Flip(move);
         _isGrounded = IsGrounded();
         _rigidbody2D.velocity = new Vector2(move * _speed,_rigidbody2D.velocity.y);
         RunAnim(move);
 
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true)
+        if((Input.GetKeyDown(KeyCode.Space)||CrossPlatformInputManager.GetButtonDown("Jump")) && IsGrounded() == true)
         {
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
             StartCoroutine(resetJumpNeeded());
